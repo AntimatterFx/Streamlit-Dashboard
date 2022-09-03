@@ -3,10 +3,20 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import yfinance as yf
+import datetime as dt
+import os
+today = dt.datetime.now().strftime("%Y-%m-%d")
+path = f'Dashboard\Saves\{today}'
+isExist = os.path.exists(path)
+
+
 st.title('Finance Tracker')
 if st.button('Update Data'):
-    exec(open('Dashboard\Stock Screener\Join.py').read())
-    
+    if not isExist:
+        st.write('Running Right Now')
+        exec(open('Dashboard\Stock Screener\Join.py').read())
+    else:
+        st.write('Ran Today')
 def Filter_df(sales,eps):
     df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
 
@@ -39,5 +49,3 @@ sales = st.sidebar.number_input("Sales",value = 15)
 eps = st.sidebar.number_input("EPS this Year",value = 15)
 
 Filter_df(sales,eps)
-#eps__next_true =st.sidebar.number_input("EPS next Year",value = 15)
-#eps__next_true =st.sidebar.number_input("EPS next Year",options = df['Sales Q/Q %'],default = 15)

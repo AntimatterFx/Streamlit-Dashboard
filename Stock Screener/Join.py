@@ -82,6 +82,8 @@ def Join():
     #\display(ultdf)
     
     ultdf.to_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
+    today = dt.datetime.now().strftime("%Y-%m-%d")
+    ultdf.to_csv(f'Dashboard\Saves\{today}.csv')
     #print(len(ultdf))   
     
     #date_now = dt.datetime.now().strftime("%m-%d-%y")

@@ -6,7 +6,7 @@ import yfinance as yf
 import datetime as dt
 import os
 today = dt.datetime.now().strftime("%Y-%m-%d")
-path = f'Dashboard\Saves\{today}'
+path = f'Dashboard\Saves\{today}.csv'
 isExist = os.path.exists(path)
 
 

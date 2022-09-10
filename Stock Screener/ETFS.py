@@ -39,7 +39,7 @@ def ETFs():
     allstocks = pd.concat(stocks)
     allstocks_etf = allstocks.groupby(['Ticker'])['ETF'].apply(','.join).reset_index() #reset index is a must or wont be a df
     allstocks_etf.to_csv('Dashboard\Stock Screener\SAVE\ETFs.csv')
-    print('Done')
+    print(len(allstocks_etf))
 
 
 ETFs()

@@ -19,10 +19,13 @@ if st.button('Update Data'):
         st.write('Ran Today')
 def Filter_df(sales,eps):
     df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
-
+    df = df.replace('-',np.nan)
     df = df[(df['Sales Q/Q %'] > sales)]  
-    df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
-
+    #df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
+    df = df[(df['EPS this Y %'] > eps)]
+    
+    #df['EPS next Y %'] = df['EPS next Y %'].astype(float)
+    df = df[(df['EPS next Y %'] > eps)]
     #MACD
     df = df.sort_values('Golden MACD',ascending= False)
 
@@ -42,10 +45,10 @@ df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
 
 st.sidebar.header('Hello')
 st.sidebar.multiselect('Sector',df['Sector'].unique())
-st.sidebar.multiselect('Industry',df['Industry'].unique())
+#st.sidebar.multiselect('Industry',df['Industry'].unique())
 
 
 sales = st.sidebar.number_input("Sales",value = 15)
-eps = st.sidebar.number_input("EPS this Year",value = 15)
+eps = st.sidebar.number_input("EPS",value = 15)
 
 Filter_df(sales,eps)

@@ -3,9 +3,10 @@ import yfinance as yf
 import numpy as np  
 import datetime as dt
 
-exec(open('Dashboard\Stock Screener\ETFS.py').read())
+#exec(open('Dashboard\Stock Screener\ETFS.py').read())
 print('1')
-exec(open('Dashboard\Stock Screener\FIN-FUND.py').read())
+#exec(open('Dashboard\Stock Screener\FIN-FUND.py').read())
+#exec(open('Dashboard\Stock Screener\FUNDV2.py').read())
 print('2')
 exec(open('Dashboard\Stock Screener\STOCK.Data.py').read())
 print('3')
@@ -20,19 +21,21 @@ def Join():
     global n, mm
     #Join the Data based on MA
     df2 = pd.read_csv('Dashboard\Stock Screener\SAVE\MA.csv',index_col= 0)
+    df2 = df2.replace('-',np.nan)
     ult = df2.copy()
 
     #Join the Data based on Fundmental 
-    df = pd.read_csv('Dashboard\Stock Screener\SAVE\Fund.csv',index_col = 0)
+    #df = pd.read_csv('Dashboard\Stock Screener\SAVE\Fund.csv',index_col = 0)
+    df = pd.read_csv('Dashboard\Stock Screener\SAVE\See1.csv',index_col = 0)
     ult = ult[ult.index.isin(df.index)]
 
     ult['Sector'] = df['Sector'] 
-    ult['Industry'] = df['Industry']
+    #ult['Industry'] = df['Industry']
     
     ult['P/E'] = df['P/E']
     ult['PEG'] = df['PEG']
     ult['P/FCF'] = df['P/FCF']
-  
+
     ult['Sales Q/Q %'] = df['Sales Q/Q %']
     ult['EPS this Y %'] = df['EPS this Y %']
     try:
@@ -80,9 +83,9 @@ def Join():
     ultdf = ultdf.join(weeklydf, how='outer')  
     ultdf = ultdf.sort_values('Weekly Golden MACD',ascending= False)
     #\display(ultdf)
-    
-    ultdf.to_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
     today = dt.datetime.now().strftime("%Y-%m-%d")
+    path = f'Dashboard\Saves\{today}.csv'
+    ultdf.to_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
     ultdf.to_csv(f'Dashboard\Saves\{today}.csv')
     #print(len(ultdf))   
     

@@ -6,7 +6,7 @@ import numpy as np
 def Daily():
     #df = pd.read_csv('Dashboard\Stock Screener\SAVE\Fund.csv') #old
     #tickers = df['Ticker'].tolist() #old
-    df = pd.read_csv('SAVE\See1.csv')
+    df = pd.read_csv('Dashboard\Stock Screener\SAVE\See1.csv')
     tickers = df['Unnamed: 0'].tolist()
     date_stock = dt.datetime.now() - dt.timedelta(days = 0)
     year_stock = dt.datetime.now() - dt.timedelta(weeks = 104)
@@ -20,7 +20,7 @@ def Daily():
 def Weekly():
     #df = pd.read_csv('SAVE\Fund.csv') #old
     #tickers = df['Ticker'].tolist()
-    df = pd.read_csv('SAVE\See1.csv')
+    df = pd.read_csv('Dashboard\Stock Screener\SAVE\See1.csv')
     tickers = df['Unnamed: 0'].tolist()
     date_stock = dt.datetime.now() - dt.timedelta(days = 0)
     year_stock = dt.datetime.now() - dt.timedelta(weeks = 380)

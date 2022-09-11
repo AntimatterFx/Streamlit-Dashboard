@@ -19,7 +19,7 @@ if st.button('Update Data'):
         st.write('Ran Today')
 def Filter_df(sales,eps):
     df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
-    df = df.replace('-',np.nan)
+    #df = df.replace('-',np.nan)
     df = df[(df['Sales Q/Q %'] > sales)]  
     #df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
     df = df[(df['EPS this Y %'] > eps)]

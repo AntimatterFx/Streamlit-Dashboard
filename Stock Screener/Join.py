@@ -3,18 +3,18 @@ import yfinance as yf
 import numpy as np  
 import datetime as dt
 
-#exec(open('Dashboard\Stock Screener\ETFS.py').read())
+#exec(open('Dashboard\Stock Screener\ETFaS.py').read())
 print('1')
 #exec(open('Dashboard\Stock Screener\FIN-FUND.py').read())
 #exec(open('Dashboard\Stock Screener\FUNDV2.py').read())
 print('2')
-#exec(open('Dashboard\Stock Screener\STOCK.Data.py').read())
+exec(open('Dashboard\Stock Screener\STOCK.Data.py').read())
 print('3')
-#exec(open('Dashboard\Stock Screener\EMA+MA.py').read())
+exec(open('Dashboard\Stock Screener\EMA+MA.py').read())
 print('4')
-#exec(open('Dashboard\Stock Screener\MTUM.py').read())
+exec(open('Dashboard\Stock Screener\MTUM.py').read())
 print('5')
-#exec(open('Dashboard\Stock Screener\MACD.py').read())
+exec(open('Dashboard\Stock Screener\MACD.py').read())
 print('6')
 
 def Join():
@@ -26,7 +26,7 @@ def Join():
 
     #Join the Data based on Fundmental 
     #df = pd.read_csv('Dashboard\Stock Screener\SAVE\Fund.csv',index_col = 0)
-    df = pd.read_csv('Dashboard\Stock Screener\SAVE\See1.csv',index_col = 0)
+    df = pd.read_csv('Dashboard\Stock Screener\SAVE\FUND.csv',index_col = 0)
     ult = ult[ult.index.isin(df.index)]
 
     ult['Sector'] = df['Sector'] 

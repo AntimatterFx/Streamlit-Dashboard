@@ -29,5 +29,4 @@ def MTUM3():
     df3T.to_csv('Dashboard\Stock Screener\SAVE\MTUM_EMA.csv')
     print(df3T)
 
-
 MTUM3()

@@ -19,13 +19,10 @@ if st.button('Update Data'):
         st.write('Ran Today')
 def Filter_df(sales,eps):
     df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
-    #df = df.replace('-',np.nan)
+    #Fundamentals
     df = df[(df['Sales Q/Q %'] > sales)]  
-    #df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
-    df = df[(df['EPS this Y %'] > eps)]
+    df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
     
-    #df['EPS next Y %'] = df['EPS next Y %'].astype(float)
-    df = df[(df['EPS next Y %'] > eps)]
     #MACD
     df = df.sort_values('Golden MACD',ascending= False)
 
@@ -39,16 +36,35 @@ def Filter_df(sales,eps):
     st.write(len(df))
     st.dataframe(df)
 
+def Filter(sales,eps):
+    pd.set_option('display.max_columns', None)
+    df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
+    #Fundamentals
+    df = df[(df['Sales Q/Q %'] > sales)]  
+    df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
+    #print(len(df))
+    #MACD
+    df = df.sort_values('Golden MACD',ascending= False)
+        
+    
 
-df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
-
-
+    #Joing MTUM
+    df = df[df['MTUM-MA-25'] > 100]
+    df = df.sort_values(by = ['Golden MACD','MTUM-MA-25','EPS this Y %'],ascending= False)
+  
+    #Join Weekly MACD with MA
+    df = df.sort_values('Weekly Golden MACD',ascending= False)
+    df = df[df['Weekly Golden MACD'] <= df['Golden MACD']]
+    st.write(len(df))
+    st.dataframe(df)
+df_select = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
 st.sidebar.header('Hello')
-st.sidebar.multiselect('Sector',df['Sector'].unique())
-#st.sidebar.multiselect('Industry',df['Industry'].unique())
+st.sidebar.multiselect('Sector',df_select['Sector'].unique())
+#st.sidebar.multiselect('Industry',df_select['Industry'].unique())
 
 
 sales = st.sidebar.number_input("Sales",value = 15)
 eps = st.sidebar.number_input("EPS",value = 15)
 
 Filter_df(sales,eps)
+Filter(sales,eps)

@@ -1,5 +1,4 @@
 import pandas as pd
-
 def MA(): 
     MA20 = []
     MA50 = []

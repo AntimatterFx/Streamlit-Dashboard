@@ -1,6 +1,7 @@
+import requests
+import time
 import pandas as pd
 import numpy as np
-import requests
 
 def Convert(dfs,stock):
     names = []
@@ -65,14 +66,11 @@ def Convert(dfs,stock):
     except:
         print(f'2-{stock}')
         
-import requests
-import time
-import pandas as pd
-import numpy as np
-saved = []
+
 def getFinData():
   
-  stocks = pd.read_csv(r'C:\Users\Tafimul\Python Main Projects\Dashboard\Stock Screener\SAVE\ETFs.csv')
+  saved = []
+  stocks = pd.read_csv('Dashboard\Stock Screener\SAVE\ETFs.csv')
   start = time.time()
   for stock in stocks['Ticker']:
     try:
@@ -90,11 +88,14 @@ def getFinData():
       d = Convert(dfs,stock)
       saved.append(d)
     except:
-      print('1')
+      print(f'1-{stock}')
   savethisdf = pd.concat(saved)
+  savethisdf.index.names = ['Tickers']
+  savethisdf[['Sector','Industry','Country']] = savethisdf['Sector'].str.split('|',expand=True)
   savethisdf = savethisdf[savethisdf.columns[0:74]]
   savethisdf = savethisdf.replace('-',np.nan)
-  savethisdf.to_csv('Dashboard\Stock Screener\SAVE\See1.csv')
+  savethisdf.to_csv('Dashboard\Stock Screener\SAVE\FUND.csv')
+  
   end = time.time()
   print(end - start)
   #return saved

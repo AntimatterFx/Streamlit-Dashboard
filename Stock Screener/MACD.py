@@ -43,16 +43,16 @@ def MACD(df,interval):
 
     if interval == 'Day':
         df2.to_csv('Dashboard\Stock Screener\SAVE\MACD_Daily.csv')
-        df2
+        #display(df2)
     elif interval == 'Weekly':
         df2.to_csv('Dashboard\Stock Screener\SAVE\MACD_Weekly.csv')
-        df2
+        #display(df2)
     else:
         df2.to_csv('Dashboard\Stock Screener\SAVE\MACD_Monthly.csv')
-        df2
-        
+        #display(df2)
 df = pd.read_csv('Dashboard\Stock Screener\SAVE\STOCKS_Daily.csv',index_col = 0,header=[0, 1])
 df1 = pd.read_csv('Dashboard\Stock Screener\SAVE\STOCKS_Weekly.csv',index_col = 0,header=[0, 1])
-#df2 = pd.read_csv('SAVE\STOCKS_Monthly.csv',index_col = 0,header=[0, 1])
+#df2 = pd.read_csv(r'Dashboard\Stock Screener\SAVE\STOCKS_Monthly.csv',index_col = 0,header=[0, 1])
 MACD(df,'Day')
 MACD(df1,'Weekly')
+

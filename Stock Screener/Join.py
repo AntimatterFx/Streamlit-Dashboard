@@ -3,10 +3,10 @@ import yfinance as yf
 import numpy as np  
 import datetime as dt
 
-#exec(open('Dashboard\Stock Screener\ETFaS.py').read())
+exec(open('Dashboard\Stock Screener\ETFS.py').read())
 print('1')
 #exec(open('Dashboard\Stock Screener\FIN-FUND.py').read())
-#exec(open('Dashboard\Stock Screener\FUNDV2.py').read())
+exec(open('Dashboard\Stock Screener\FUNDV2.py').read())
 print('2')
 exec(open('Dashboard\Stock Screener\STOCK.Data.py').read())
 print('3')

@@ -67,10 +67,12 @@ def Convert(dfs,stock):
         print(f'2-{stock}')
         
 
+
 def getFinData():
   
   saved = []
   stocks = pd.read_csv('Dashboard\Stock Screener\SAVE\ETFs.csv')
+  #stocks = pd.read_csv('SAVE\ETFs.csv')
   start = time.time()
   for stock in stocks['Ticker']:
     try:
@@ -88,14 +90,13 @@ def getFinData():
       d = Convert(dfs,stock)
       saved.append(d)
     except:
-      print(f'1-{stock}')
+      print('1')
   savethisdf = pd.concat(saved)
   savethisdf.index.names = ['Tickers']
   savethisdf[['Sector','Industry','Country']] = savethisdf['Sector'].str.split('|',expand=True)
   savethisdf = savethisdf[savethisdf.columns[0:74]]
   savethisdf = savethisdf.replace('-',np.nan)
   savethisdf.to_csv('Dashboard\Stock Screener\SAVE\FUND.csv')
-  
   end = time.time()
   print(end - start)
   #return saved

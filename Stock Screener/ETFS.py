@@ -20,7 +20,7 @@ def ETFs():
     with requests.Session() as req:
         req.headers.update(headers)
         for tick in Tickers: #
-            r = req.get(url.format(tick))
+            r = req.get(url.format(tick),verify=True)#SO I can scrap data 
             #print(f"Extracting: {r.url}")
             goal = re.findall(r'etf\\\/(.*?)\\', r.text)
             #print(len(goal))
@@ -40,6 +40,6 @@ def ETFs():
     allstocks_etf = allstocks.groupby(['Ticker'])['ETF'].apply(','.join).reset_index() #reset index is a must or wont be a df
     allstocks_etf.to_csv('Dashboard\Stock Screener\SAVE\ETFs.csv')
     print('Done')
-
-
 ETFs()
+
+#allstocks_etf.to_csv('Dashboard\Stock Screener\SAVE\ETFs.csv')

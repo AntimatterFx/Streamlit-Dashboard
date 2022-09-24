@@ -14,11 +14,11 @@ st.title('Finance Tracker')
 if st.button('Update Data'):
     if not isExist:
         st.write('Running Right Now')
-        exec(open('Dashboard\Stock Screener\Join.py').read())
+        exec(open('Dashboard\Stock_Screener\Join.py').read())
     else:
         st.write('Ran Today')
 def Filter_df(sales,eps):
-    df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
+    df = pd.read_csv('Dashboard\Stock_Screener\SAVE\Stocks Table.csv')
     #Fundamentals
     df = df[(df['Sales Q/Q %'] > sales)]  
     df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
@@ -38,7 +38,7 @@ def Filter_df(sales,eps):
 
 def Filter(sales,eps):
     pd.set_option('display.max_columns', None)
-    df = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
+    df = pd.read_csv('Dashboard\Stock_Screener\SAVE\Stocks Table.csv')
     #Fundamentals
     df = df[(df['Sales Q/Q %'] > sales)]  
     df = df[(df['EPS this Y %'] > eps) | (df['EPS next Y %'] > eps)]
@@ -57,7 +57,7 @@ def Filter(sales,eps):
     df = df[df['Weekly Golden MACD'] <= df['Golden MACD']]
     st.write(len(df))
     st.dataframe(df)
-df_select = pd.read_csv('Dashboard\Stock Screener\SAVE\Stocks Table.csv')
+df_select = pd.read_csv('Dashboard\Stock_Screener\SAVE\Stocks Table.csv')
 st.sidebar.header('Hello')
 st.sidebar.multiselect('Sector',df_select['Sector'].unique())
 #st.sidebar.multiselect('Industry',df_select['Industry'].unique())

@@ -57,6 +57,7 @@ def Filter(sales,eps):
     df = df[df['Weekly Golden MACD'] <= df['Golden MACD']]
     st.write(len(df))
     st.dataframe(df)
+    
 df_select = pd.read_csv('Dashboard\Stock_Screener\SAVE\Stocks Table.csv')
 st.sidebar.header('Hello')
 st.sidebar.multiselect('Sector',df_select['Sector'].unique())
@@ -66,5 +67,5 @@ st.sidebar.multiselect('Sector',df_select['Sector'].unique())
 sales = st.sidebar.number_input("Sales",value = 15)
 eps = st.sidebar.number_input("EPS",value = 15)
 
-Filter_df(sales,eps)
+#Filter_df(sales,eps)
 Filter(sales,eps)

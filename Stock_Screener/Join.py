@@ -3,19 +3,19 @@ import yfinance as yf
 import numpy as np  
 import datetime as dt
 #from FUNDV2 import getFinData
-
+#getFinData()
 #exec(open('Dashboard\Stock_Screener\ETFS.py').read())
 print('1')
 #exec(open('Dashboard\Stock_Screener\FIN-FUND.py').read())
 #exec(open('Dashboard\Stock_Screener\FUNDV2.py').read())
 print('2')
-#exec(open('Dashboard\Stock_Screener\STOCK.Data.py').read())
+exec(open('Dashboard\Stock_Screener\STOCK.Data.py').read())
 print('3')
-#exec(open('Dashboard\Stock_Screener\EMA+MA.py').read())
+exec(open('Dashboard\Stock_Screener\EMA+MA.py').read())
 print('4')
-#exec(open('Dashboard\Stock_Screener\MTUM.py').read())
+exec(open('Dashboard\Stock_Screener\MTUM.py').read())
 print('5')
-#exec(open('Dashboard\Stock_Screener\MACD.py').read())
+exec(open('Dashboard\Stock_Screener\MACD.py').read())
 print('6')
 
 def Join():

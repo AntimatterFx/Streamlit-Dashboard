@@ -6,17 +6,11 @@ import yfinance as yf
 import datetime as dt
 import os
 today = dt.datetime.now().strftime("%Y-%m-%d")
-path = f'Dashboard\Saves\{today}.csv'
+path = f'Saves\{today}.csv'
 isExist = os.path.exists(path)
 
 
 st.title('Finance Tracker')
-if st.button('Update Data'):
-    if not isExist:
-        st.write('Running Right Now')
-        exec(open('Dashboard\Stock_Screener\Join.py').read())
-    else:
-        st.write('Ran Today')
 def Filter_df(sales,eps):
     df = pd.read_csv('Dashboard\Stock_Screener\SAVE\Stocks Table.csv')
     #Fundamentals

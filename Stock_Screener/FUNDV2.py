@@ -71,7 +71,7 @@ def getFinData():
   global Names_of_Tickers 
   Names_of_Tickers = []
   saved = []
-  stocks = pd.read_csv('Dashboard\Stock_Screener\SAVE\ETFs.csv')
+  stocks = pd.read_csv(r'C:\Users\tafim\Python\Streamlit-Dashboard\Stock_Screener\SAVE\ETFs.csv')
   print(len(stocks))
   stocks = stocks.drop_duplicates('Ticker')
   print(len(stocks))
@@ -104,7 +104,7 @@ def getFinData():
   savethisdf[['Sector','Industry','Country']] = savethisdf['Sector'].str.split('|',expand=True)
   savethisdf = savethisdf[savethisdf.columns[0:74]]
   savethisdf = savethisdf.replace('-',np.nan)
-  savethisdf.to_csv('Dashboard\Stock_Screener\SAVE\FUND.csv')
+  savethisdf.to_csv(r'C:\Users\tafim\Python\Streamlit-Dashboard\Stock_Screener\SAVE\FUND.csv')
   end = time.time()
   print(end - start)
   #return saved
